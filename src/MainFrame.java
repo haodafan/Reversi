@@ -88,7 +88,7 @@ public class MainFrame extends javax.swing.JFrame {
         }
         */ 
         
-        
+        //It's an old program
         //NEW TEST LISTENER METHOD
         //Nicknamed "THE REALLY INEFFICIENT AND ANNOYINGLY LONG ALGORITHM"
         panelBoard.addMouseListener(new MouseAdapter() {
