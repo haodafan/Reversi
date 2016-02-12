@@ -21,6 +21,7 @@ public class MainFrame extends javax.swing.JFrame {
     
     //Creates an array of strings to identify what's on each grid
     public String [] [] gridId;
+    String idMemory;
     public boolean turnBlack = true;
     
     //These variables are universally used
@@ -59,12 +60,13 @@ public class MainFrame extends javax.swing.JFrame {
         //GRID : 0,1,2,3,4,5,6,7
         
         //NOTE THIS IS FOR DEBUGGING PURPOSES
-        panelBoard.addMouseListener(new MouseAdapter(){
-            public void mousePressed(MouseEvent e){
-                System.out.println("You've pressed something in the panel.");
-            }
-        });
+        //panelBoard.addMouseListener(new MouseAdapter(){
+        //    public void mousePressed(MouseEvent e){
+        //        System.out.println("You've pressed something in the panel.");
+        //    }
+        //});
         
+        /* OLD VERSION
         //Adds a mouse listener for every label 
         for (int row = 0; row < 8; row++){
             for (int col = 0; col < 8; col++){
@@ -84,7 +86,55 @@ public class MainFrame extends javax.swing.JFrame {
                 
             }
         }
+        */ 
         
+        
+        //NEW TEST LISTENER METHOD
+        //Nicknamed "THE REALLY INEFFICIENT AND ANNOYINGLY LONG ALGORITHM"
+        panelBoard.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e){
+                int rowY = panelBoard.getY(); 
+                int colX = panelBoard.getX(); //Gets the coordinates of the panel
+                int row = -1;
+                int col = -1; 
+                
+                //Debugging
+                System.out.println("Y Coordinate: " + panelBoard.getY());
+                
+                //BEGIN ANNOYINGLY LONG PART
+                if (rowY < 30){
+                    row = 0;
+                }
+                else if (rowY < 60){
+                    row = 1;
+                }
+                else if (rowY < 90){
+                    row = 2;
+                }
+                else if (rowY < 120){
+                    row = 3;
+                }
+                else if (rowY < 150){
+                    row = 4;
+                }
+                else if (rowY < 180){
+                    row = 5;
+                }
+                else if (rowY < 210){
+                    row = 6;
+                }
+                else if (rowY < 240){
+                    row = 7;
+                }
+                else{
+                    System.out.println("ERROR");
+                }
+                
+                System.out.println("You clicked on" + row + "," + col);
+            }
+        
+        });
         
     }
     
