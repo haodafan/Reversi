@@ -1,3 +1,6 @@
+
+import javax.swing.JLabel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,8 +9,13 @@
 
 /**
  *
- * @author haoda
+ * @author edwinfinch
  */
-class gridId {
-    
+public class RLabel extends JLabel{
+    public int row;
+    public int column;
+
+    RLabel(String string) {
+        super(string);
+    }
 }

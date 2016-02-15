@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 
 public class MainFrame extends javax.swing.JFrame {
-    JLabel [] [] mainGrid; //Creates a new array of JLabels
+    RLabel [] [] mainGrid; //Creates a new array of JLabels
     
     //Creates an array of strings to identify what's on each grid
     public String [] [] gridId;
@@ -41,20 +41,35 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         turnBlack = true;
         //Grid Variables
-        mainGrid = new JLabel [8][8];
+        mainGrid = new RLabel [8][8];
         panelBoard.setLayout(new GridLayout (8,8,0,0));
         gridId = new String [8][8];
         
         //SETTING UP THE GRID
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
-                mainGrid[row][col] = new JLabel(""); //Adds text to the label
+                mainGrid[row][col] = new RLabel(""); //Adds text to the label
+                mainGrid[row][col].row = row;
+                mainGrid[row][col].column = col;
                 mainGrid[row][col].setPreferredSize(new Dimension(30, 30)); //Sets the label size
                 mainGrid[row][col].setHorizontalAlignment(javax.swing.SwingConstants.CENTER);//Sets word allignment
                 
                 mainGrid[row][col].setIcon(new javax.swing.ImageIcon(getClass().getResource("/tileEmpty.png")));
                 
                 panelBoard.add(mainGrid[row][col]); //Adds the label to the panel
+                
+                mainGrid[row][col].addMouseListener(new MouseAdapter(){
+                    public void mousePressed(MouseEvent e){
+                        RLabel labelClicked = (RLabel)e.getSource();
+                        System.out.println("You clicked on " + labelClicked.row + " col " + labelClicked.column);
+                    }
+                    public void mouseEntered(MouseEvent e){
+                        
+                    }
+                    public void mouseExited(MouseEvent e){
+                        
+                    }
+                });
             }
         }
         //GRID : 0,1,2,3,4,5,6,7
